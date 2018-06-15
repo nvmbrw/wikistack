@@ -9,7 +9,8 @@ app.use(express.static('./public'));
 
 app.use('/wiki', wiki);
 app.use('/users', user);
-app.use('/', (req, res, next) => {
+
+app.get('/', (req, res, next) => {
   res.redirect('/wiki');
 });
 app.use(morgan('dev'));
@@ -24,6 +25,5 @@ let init = async () => {
   });
 };
 init();
-// note: access Page or User tables with db.page & db.user
 
 module.exports = app;
